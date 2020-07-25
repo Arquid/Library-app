@@ -8,8 +8,12 @@ export default class ForLoan extends React.Component {
         this.props.loanBookFromLibrary(id);
     }
 
+    removeBookFromLibrary = (id) => {
+        this.props.removeBookFromLibrary(id);
+    }
+
     render() {
-        let books = this.props.booksForLoan.map((book, index) => { 
+        let books = this.props.booksForLoan.map((book) => { 
             return (
             <Table.Row key={book.id}>
                 <Table.Cell>{book.name}</Table.Cell>
@@ -20,6 +24,10 @@ export default class ForLoan extends React.Component {
                         name={book.id}
                         onClick={() => this.loanBookFromLibrary(book.id)}
                 >Loan</Button></Table.Cell>
+                <Table.Cell><Button
+                        name={book.id}
+                        onClick={() => this.removeBookFromLibrary(book.id)}
+                >Remove</Button></Table.Cell>
             </Table.Row>
             )
         })
@@ -32,6 +40,7 @@ export default class ForLoan extends React.Component {
                         <Table.HeaderCell>Pages</Table.HeaderCell>
                         <Table.HeaderCell>Genre</Table.HeaderCell>
                         <Table.HeaderCell>Loan</Table.HeaderCell>
+                        <Table.HeaderCell>Remove</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

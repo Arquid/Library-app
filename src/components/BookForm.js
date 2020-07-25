@@ -24,7 +24,7 @@ export default class BookForm extends React.Component {
 		let book = {
 			name: this.state.name,
 			author: this.state.author,
-			pages: this.state.pages,
+			pages: parseInt(this.state.pages,10),
 			genre: this.state.genre
 		}
 		this.props.addBookToList(book);
